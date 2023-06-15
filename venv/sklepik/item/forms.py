@@ -4,11 +4,11 @@ from .models import Item
 
 INPUT_CLASSES = 'w-full py-4 px-6 rounded-xl border'
 
-class NewItemForm(forms.ModelForm):
+class NewItemForm(forms.ModelForm): # Formularz nowego itemu
     class Meta:
-        model = Item
+        model = Item  # Model, do którego formularz jest powiązany
         fields = ('category', 'name', 'description', 'price', 'image',)
-        widgets = {
+        widgets = { # Widżety formularza, klasy css
             'category': forms.Select(attrs={
                 'class': INPUT_CLASSES
             }),
@@ -26,7 +26,7 @@ class NewItemForm(forms.ModelForm):
             })
         }
 
-class EditItemForm(forms.ModelForm):
+class EditItemForm(forms.ModelForm): #Formularz edycji itemów
     class Meta:
         model = Item
         fields = ('name', 'description', 'price', 'image', 'is_sold')
