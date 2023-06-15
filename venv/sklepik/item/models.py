@@ -3,18 +3,18 @@ from django.db import models
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255) # Pole przechowujące nazwę kategorii
 
     class Meta:
-        ordering = ('name',)
-        verbose_name_plural = 'Categories'
+        ordering = ('name',) # Kolejność sortowania kategorii po nazwie
+        verbose_name_plural = 'Categories' # Nazwa dla wielu kategorii
 
     def __str__(self):
-        return self.name
+        return self.name # Zwraca reprezentację tekstową kategorii (jej nazwę)
 
 
 class Item(models.Model):
-    category = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE) # Klucz obcy do kategorii, relacja jeden do wielu
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     price = models.FloatField()
@@ -24,4 +24,4 @@ class Item(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return self.name # Zwraca reprezentację nazwe
